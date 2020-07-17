@@ -1,0 +1,28 @@
+syntax="proto3";
+package pbfiles;
+
+message User {
+  string id = 1;
+  string email = 2;
+  string name = 3;
+  string password = 4;
+}
+
+message UsersRequest {
+    repeated User users = 1;
+}
+
+message UserResponse {
+  string message = 1;
+  uint64 code = 2;
+  User user = 3;
+}
+
+message UsersStreamResponse {
+    repeated UserResponse userRep = 1;
+}
+
+service UserService {
+  rpc LoginUser(User) returns (UserResponse) {}
+  rpc GetUserStream(UsersRequest) returns (stream UsersStreamResponse) {}
+}
