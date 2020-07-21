@@ -1,0 +1,51 @@
+syntax="proto3";
+package pbfiles;
+
+// Fixed size message for testing throughout
+message BenchmarkMessage {
+  string Field1 = 1;
+  string Field9 = 9;
+  string Field18 = 18;
+  bool Field80 = 80;
+  bool Field81 = 81;
+  int32 Field2 = 2;
+  int32 Field3 = 3;
+  int32 Field280 = 280;
+  int32 Field6 = 6;
+  uint64 Field22 = 22;
+  string Field4 = 4;
+  repeated fixed64 Field5 = 5;
+  bool Field59 = 59;
+  string Field7 = 7;
+  int32 Field16 = 16;
+  int32 Field130 = 130;
+  bool Field12 = 12;
+  bool Field17 = 17;
+  bool Field13 = 13;
+  bool Field14 = 14;
+  int32 Field104 = 104;
+  int32 Field100 = 100;
+  int32 Field101 = 101;
+  string Field102 = 102;
+  string Field103 = 103;
+  int32 Field29 = 29;
+  bool Field30 = 30;
+  int32 Field60 = 60;
+  int32 Field271 = 271;
+  int32 Field272 = 272;
+  int32 Field150 = 150;
+  int32 Field23 = 23;
+  bool Field24 = 24;
+  int32 Field25 = 25;
+  bool Field78 = 78;
+  int32 Field67 = 67;
+  int32 Field68 = 68;
+  int32 Field128 = 128;
+  string Field129 = 129;
+  int32 Field131 = 131;
+}
+
+service TransferService {
+    rpc DataTransmission(BenchmarkMessage) returns (BenchmarkMessage) {}
+    rpc DataTransmissionStream(BenchmarkMessage) returns (stream BenchmarkMessage) {}
+}

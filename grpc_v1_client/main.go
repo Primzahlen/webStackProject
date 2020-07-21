@@ -15,8 +15,8 @@ func main() {
 
 	defer conn.Close()
 	userClient := pbfiles.NewUserServiceClient(conn)
-	//services.OneWayLogin(userClient)
-	services.LoginByStream(userClient)
+	services.OneWayLogin(userClient)
+	//services.LoginByStream(userClient)
 	//userRes, err := userClient.LoginUser(context.Background(), &pbfiles.User{
 	//	Email: "ycx@gla.ac.uk",
 	//	Name: "Ye Caixu",
@@ -31,4 +31,10 @@ func main() {
 	//	log.Fatalf("grpc response is wrong: %v", userRes)
 	//}
 	//fmt.Println(userRes.User)
+
+
+	//调用transfer函数
+	transferClient := pbfiles.NewTransferServiceClient(conn)
+	services.SendMessage(transferClient)
+
 }

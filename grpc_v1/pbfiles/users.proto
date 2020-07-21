@@ -25,4 +25,6 @@ message UsersStreamResponse {
 service UserService {
   rpc LoginUser(User) returns (UserResponse) {}
   rpc GetUserStream(UsersRequest) returns (stream UsersStreamResponse) {}
+  rpc LoginUserSql(User) returns (UserResponse) {}
+  rpc GetUserStreamSql(UsersRequest) returns (stream UsersStreamResponse) {}
 }
