@@ -1,0 +1,10 @@
+$ GO111MODULE=on go test -bench=. -benchmem
+goos: darwin
+goarch: amd64
+pkg: grpc_v1_client/test
+BenchmarkOneWay-4                    759           1337761 ns/op            5227 B/op        101 allocs/op
+BenchmarkOneWaySql-4                 846           1483544 ns/op            5218 B/op        101 allocs/op
+BenchmarkLoginStream-4              4597            260964 ns/op             507 B/op          9 allocs/op
+BenchmarkLoginStreamSql-4            838           1252014 ns/op             857 B/op         14 allocs/op
+PASS
+ok      grpc_v1_client/test     6.887s

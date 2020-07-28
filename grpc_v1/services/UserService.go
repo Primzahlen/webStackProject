@@ -104,7 +104,7 @@ func (*UserService) LoginUserSql(ctx context.Context, in *pbfiles.User) (*pbfile
 			Message: validationErr.Error(),
 		}, validationErr
 	}
-	// GORM操作
+	// MYSQL操作
 	db := common.GetMysql()
 	// 获取参数
 	email := in.Email
@@ -128,7 +128,7 @@ func (*UserService) LoginUserSql(ctx context.Context, in *pbfiles.User) (*pbfile
 		}, nil
 	}
 	// 登陆成功
-	fmt.Println("登陆成功，用户为：",user.Email)
+	//log.Println("登陆成功，用户为：",user.Email)
 	return &pbfiles.UserResponse{
 		Code: 200,
 		Message: "OK",

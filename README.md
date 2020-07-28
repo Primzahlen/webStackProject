@@ -4,5 +4,5 @@ Server implement by grpc with grom
 Client implement by grpc, it has two request methods.
 ## http v1 server
 Server implement by http protol
-## http v1 client
+## http client
 Client implement by http protol

@@ -281,7 +281,7 @@ var file_users_proto_rawDesc = []byte{
 	0x65, 0x12, 0x2f, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x52, 0x65, 0x70, 0x18, 0x01, 0x20, 0x03,
 	0x28, 0x0b, 0x32, 0x15, 0x2e, 0x70, 0x62, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65,
 	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x07, 0x75, 0x73, 0x65, 0x72, 0x52,
-	0x65, 0x70, 0x32, 0x8c, 0x01, 0x0a, 0x0b, 0x55, 0x73, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x65, 0x70, 0x32, 0x91, 0x02, 0x0a, 0x0b, 0x55, 0x73, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x12, 0x33, 0x0a, 0x09, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x12,
 	0x0d, 0x2e, 0x70, 0x62, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x1a, 0x15,
 	0x2e, 0x70, 0x62, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73,
@@ -290,7 +290,15 @@ var file_users_proto_rawDesc = []byte{
 	0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
 	0x1c, 0x2e, 0x70, 0x62, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x73, 0x53,
 	0x74, 0x72, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x30,
-	0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x01, 0x12, 0x36, 0x0a, 0x0c, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x53, 0x71,
+	0x6c, 0x12, 0x0d, 0x2e, 0x70, 0x62, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72,
+	0x1a, 0x15, 0x2e, 0x70, 0x62, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x4b, 0x0a, 0x10, 0x47, 0x65, 0x74,
+	0x55, 0x73, 0x65, 0x72, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x53, 0x71, 0x6c, 0x12, 0x15, 0x2e,
+	0x70, 0x62, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x70, 0x62, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2e, 0x55,
+	0x73, 0x65, 0x72, 0x73, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x00, 0x30, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -318,10 +326,14 @@ var file_users_proto_depIdxs = []int32{
 	2, // 2: pbfiles.UsersStreamResponse.userRep:type_name -> pbfiles.UserResponse
 	0, // 3: pbfiles.UserService.LoginUser:input_type -> pbfiles.User
 	1, // 4: pbfiles.UserService.GetUserStream:input_type -> pbfiles.UsersRequest
-	2, // 5: pbfiles.UserService.LoginUser:output_type -> pbfiles.UserResponse
-	3, // 6: pbfiles.UserService.GetUserStream:output_type -> pbfiles.UsersStreamResponse
-	5, // [5:7] is the sub-list for method output_type
-	3, // [3:5] is the sub-list for method input_type
+	0, // 5: pbfiles.UserService.LoginUserSql:input_type -> pbfiles.User
+	1, // 6: pbfiles.UserService.GetUserStreamSql:input_type -> pbfiles.UsersRequest
+	2, // 7: pbfiles.UserService.LoginUser:output_type -> pbfiles.UserResponse
+	3, // 8: pbfiles.UserService.GetUserStream:output_type -> pbfiles.UsersStreamResponse
+	2, // 9: pbfiles.UserService.LoginUserSql:output_type -> pbfiles.UserResponse
+	3, // 10: pbfiles.UserService.GetUserStreamSql:output_type -> pbfiles.UsersStreamResponse
+	7, // [7:11] is the sub-list for method output_type
+	3, // [3:7] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
 	3, // [3:3] is the sub-list for extension extendee
 	0, // [0:3] is the sub-list for field type_name
@@ -416,6 +428,8 @@ const _ = grpc.SupportPackageIsVersion6
 type UserServiceClient interface {
 	LoginUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*UserResponse, error)
 	GetUserStream(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (UserService_GetUserStreamClient, error)
+	LoginUserSql(ctx context.Context, in *User, opts ...grpc.CallOption) (*UserResponse, error)
+	GetUserStreamSql(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (UserService_GetUserStreamSqlClient, error)
 }
 
 type userServiceClient struct {
@@ -467,10 +481,53 @@ func (x *userServiceGetUserStreamClient) Recv() (*UsersStreamResponse, error) {
 	return m, nil
 }
 
+func (c *userServiceClient) LoginUserSql(ctx context.Context, in *User, opts ...grpc.CallOption) (*UserResponse, error) {
+	out := new(UserResponse)
+	err := c.cc.Invoke(ctx, "/pbfiles.UserService/LoginUserSql", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetUserStreamSql(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (UserService_GetUserStreamSqlClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_UserService_serviceDesc.Streams[1], "/pbfiles.UserService/GetUserStreamSql", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &userServiceGetUserStreamSqlClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type UserService_GetUserStreamSqlClient interface {
+	Recv() (*UsersStreamResponse, error)
+	grpc.ClientStream
+}
+
+type userServiceGetUserStreamSqlClient struct {
+	grpc.ClientStream
+}
+
+func (x *userServiceGetUserStreamSqlClient) Recv() (*UsersStreamResponse, error) {
+	m := new(UsersStreamResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 type UserServiceServer interface {
 	LoginUser(context.Context, *User) (*UserResponse, error)
 	GetUserStream(*UsersRequest, UserService_GetUserStreamServer) error
+	LoginUserSql(context.Context, *User) (*UserResponse, error)
+	GetUserStreamSql(*UsersRequest, UserService_GetUserStreamSqlServer) error
 }
 
 // UnimplementedUserServiceServer can be embedded to have forward compatible implementations.
@@ -482,6 +539,12 @@ func (*UnimplementedUserServiceServer) LoginUser(context.Context, *User) (*UserR
 }
 func (*UnimplementedUserServiceServer) GetUserStream(*UsersRequest, UserService_GetUserStreamServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetUserStream not implemented")
+}
+func (*UnimplementedUserServiceServer) LoginUserSql(context.Context, *User) (*UserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoginUserSql not implemented")
+}
+func (*UnimplementedUserServiceServer) GetUserStreamSql(*UsersRequest, UserService_GetUserStreamSqlServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetUserStreamSql not implemented")
 }
 
 func RegisterUserServiceServer(s *grpc.Server, srv UserServiceServer) {
@@ -527,6 +590,45 @@ func (x *userServiceGetUserStreamServer) Send(m *UsersStreamResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
+func _UserService_LoginUserSql_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(User)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).LoginUserSql(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pbfiles.UserService/LoginUserSql",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).LoginUserSql(ctx, req.(*User))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetUserStreamSql_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(UsersRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(UserServiceServer).GetUserStreamSql(m, &userServiceGetUserStreamSqlServer{stream})
+}
+
+type UserService_GetUserStreamSqlServer interface {
+	Send(*UsersStreamResponse) error
+	grpc.ServerStream
+}
+
+type userServiceGetUserStreamSqlServer struct {
+	grpc.ServerStream
+}
+
+func (x *userServiceGetUserStreamSqlServer) Send(m *UsersStreamResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 var _UserService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pbfiles.UserService",
 	HandlerType: (*UserServiceServer)(nil),
@@ -535,11 +637,20 @@ var _UserService_serviceDesc = grpc.ServiceDesc{
 			MethodName: "LoginUser",
 			Handler:    _UserService_LoginUser_Handler,
 		},
+		{
+			MethodName: "LoginUserSql",
+			Handler:    _UserService_LoginUserSql_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "GetUserStream",
 			Handler:       _UserService_GetUserStream_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "GetUserStreamSql",
+			Handler:       _UserService_GetUserStreamSql_Handler,
 			ServerStreams: true,
 		},
 	},

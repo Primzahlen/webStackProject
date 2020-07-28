@@ -68,6 +68,7 @@ func LoginUserOrm(w http.ResponseWriter, r *http.Request) {
 		Message: "OK",
 		User: &user,
 	})
+
 }
 
 // Create Login handler with SQL
@@ -109,7 +110,7 @@ func LoginUserSQL(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 登陆成功
-	fmt.Println("登陆成功，用户为：",user.Email)
+	//log.Println("登陆成功，用户为：",user.Email)
 
 	json.NewEncoder(w).Encode(Response{
 		Code: 200,

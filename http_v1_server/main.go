@@ -13,8 +13,8 @@ func main() {
 	db := common.InitMysql()
 	defer db.Close()
 	// 监听服务
-	//http.HandleFunc("/",services.LoginUserOrm)
-	http.HandleFunc("/",services.LoginUserSQL)
+	http.HandleFunc("/LoginUserOrm",services.LoginUserOrm)
+	http.HandleFunc("/LoginUserSQL",services.LoginUserSQL)
 	err := http.ListenAndServe(":60001", nil)
 	if err != nil {
 		log.Fatalf("Fail to start network listening server #{err}\n")
