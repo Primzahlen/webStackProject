@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/jinzhu/gorm"
 	"strings"
+	"time"
 )
 import _ "github.com/go-sql-driver/mysql"
 
@@ -30,8 +31,14 @@ func InitDB() *gorm.DB{
 	if err != nil{
 		panic("failed to connect database, err:" + err.Error())
 	}
-	fmt.Printf("已经连接到数据库")
+	fmt.Printf("已经连接到数据库 \n")
 	//db.AutoMigrate(&services.User{})
+	// SetMaxIdleConns 设置空闲连接池中的最大连接数。
+	db.DB().SetMaxIdleConns(1000)
+	// SetMaxOpenConns 设置数据库连接最大打开数。
+	db.DB().SetMaxOpenConns(1000)
+	// SetConnMaxLifetime 设置可重用连接的最长时间
+	db.DB().SetConnMaxLifetime(time.Minute)
 	DB = db
 	return db
 }
@@ -61,9 +68,10 @@ func InitMysql() *sql.DB{
 	//打开数据库,前者是驱动名，所以要导入： _ "github.com/go-sql-driver/mysql"
 	db, _ = sql.Open(driverName, path)
 	//设置数据库最大连接数
-	db.SetConnMaxLifetime(100)
+	db.SetConnMaxLifetime(1000)
 	//设置上数据库最大闲置连接数
-	db.SetMaxIdleConns(10)
+	db.SetMaxIdleConns(1000)
+	db.SetConnMaxLifetime(time.Minute)
 	//验证连接
 	if err := db.Ping(); err != nil{
 		fmt.Println("opon database fail")

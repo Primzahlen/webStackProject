@@ -1,21 +1,21 @@
 package main
 
 import (
-	"google.golang.org/grpc"
-	"grpc_v1_client/pbfiles"
+	"github.com/gin-gonic/gin"
 	"grpc_v1_client/services"
-	"log"
 )
-func main() {
-	conn, err := grpc.Dial(":8081", grpc.WithInsecure())
-	if err != nil{
-		log.Fatal("Fail to connect grpc server #{err}\n")
-	}
 
+func main() {
+	conn := services.InitGrpc()
+	r := gin.Default()
+	//r.GET("/ping", func(c *gin.Context) {
+	//	c.JSON(200, gin.H{
+	//		"message": "pong",
+	//	})
+	//})
+	r.GET("/login_orm", services.CallLoginOrm)
+	r.GET("/login_sql", services.CallLoginSql)
+	r.GET("/send_message", services.CallSendMessage)
 	defer conn.Close()
-	userClient := pbfiles.NewUserServiceClient(conn)
-	services.OneWayLogin(userClient, b)
-	//调用transfer函数
-	transferClient := pbfiles.NewTransferServiceClient(conn)
-	services.SendMessage(transferClient)
+	panic(r.Run()) // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }

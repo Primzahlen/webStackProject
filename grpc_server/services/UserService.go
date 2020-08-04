@@ -3,7 +3,6 @@ package services
 import (
 	"context"
 	"errors"
-	"fmt"
 	"grpc_v1/common"
 	"grpc_v1/pbfiles"
 	"log"
@@ -13,8 +12,6 @@ import (
 type UserService struct {
 
 }
-
-
 
 func (*UserService) LoginUser(ctx context.Context, in *pbfiles.User) (*pbfiles.UserResponse, error)  {
 	validationErr := validate(in)
@@ -30,8 +27,7 @@ func (*UserService) LoginUser(ctx context.Context, in *pbfiles.User) (*pbfiles.U
 	email := in.Email
 	password := in.Password
 	var user pbfiles.User
-	//db.First(&user, id) // 查询id为1的user
-	db.Where("email = ?", email).Find(&user)
+	db.Where("email = ?", email).First(&user)
 	if user.Id == "" {
 		return &pbfiles.UserResponse{
 			Code: 422,
@@ -45,7 +41,7 @@ func (*UserService) LoginUser(ctx context.Context, in *pbfiles.User) (*pbfiles.U
 		}, nil
 	}
 	// 登陆成功
-	fmt.Println("登陆成功，用户为：",user.Email)
+	//fmt.Println("登陆成功，用户为：",user.Email)
 	return &pbfiles.UserResponse{
 		Code: 200,
 		Message: "OK",

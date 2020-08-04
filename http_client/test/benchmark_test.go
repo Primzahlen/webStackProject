@@ -14,9 +14,8 @@ func BenchmarkLoginRequest(b *testing.B) {
 	}
 }
 
-func BenchmarkLoginRequestSql(b *testing.B) {
-	for i:=0; i<b.N;i++ {
-		services.LoginRequestSql(client)
-	}
-}
-
+//func BenchmarkLoginRequestSql(b *testing.B) {
+//	for i:=0; i<b.N;i++ {
+//		services.LoginRequestSql(client)
+//	}
+//}

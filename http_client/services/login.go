@@ -22,14 +22,14 @@ type Response struct {
 
 func LoginRequest(client *http.Client) {
 	u := &User{
-		Email: "ycx@gla.ac.uk",
+		Email: "123@qq.com",
 		Password: "123456",
 	}
 	buf := new(bytes.Buffer)
 	json.NewEncoder(buf).Encode(u)
 	resp, err := client.Post("http://127.0.0.1:60001/LoginUserOrm", "application/json", buf)
 	if err != nil {
-		log.Fatalf("Http request failed: #{err}\n")
+		log.Fatalf("Http request failed: %s",err)
 	}
 	defer resp.Body.Close()
 
@@ -47,7 +47,7 @@ func LoginRequest(client *http.Client) {
 
 func LoginRequestSql(client *http.Client) {
 	u := &User{
-		Email: "ycx@gla.ac.uk",
+		Email: "123@qq.com",
 		Password: "123456",
 	}
 	buf := new(bytes.Buffer)

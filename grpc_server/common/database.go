@@ -4,11 +4,11 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/jinzhu/gorm"
-	"grpc_v1/pbfiles"
 	"strings"
+	"time"
 )
 import _ "github.com/go-sql-driver/mysql"
-import _ "github.com/go-sql-driver/mysql"
+
 var DB *gorm.DB
 
 func InitDB() *gorm.DB{
@@ -31,8 +31,11 @@ func InitDB() *gorm.DB{
 	if err != nil{
 		panic("failed to connect database, err:" + err.Error())
 	}
-
-	db.AutoMigrate(&pbfiles.User{})
+	fmt.Println("connnect success")
+	db.DB().SetMaxIdleConns(1000)
+	db.DB().SetMaxOpenConns(1000)
+	db.DB().SetConnMaxLifetime(time.Minute)
+	//db.AutoMigrate(&pbfiles.User{})
 	DB = db
 	return db
 }
@@ -62,9 +65,10 @@ func InitMysql() *sql.DB{
 	//打开数据库,前者是驱动名，所以要导入： _ "github.com/go-sql-driver/mysql"
 	db, _ = sql.Open(driverName, path)
 	//设置数据库最大连接数
-	db.SetConnMaxLifetime(100)
+	db.SetMaxOpenConns(1000)
 	//设置上数据库最大闲置连接数
-	db.SetMaxIdleConns(10)
+	db.SetMaxIdleConns(1000)
+	db.SetConnMaxLifetime(time.Minute)
 	//验证连接
 	if err := db.Ping(); err != nil{
 		fmt.Println("opon database fail")

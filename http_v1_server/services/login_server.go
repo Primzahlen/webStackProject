@@ -3,7 +3,6 @@ package services
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"http_v1_server/common"
 	"log"
 	"net/http"
@@ -46,7 +45,8 @@ func LoginUserOrm(w http.ResponseWriter, r *http.Request) {
 	email := u.Email
 	password := u.Password
 	var user User
-	db.Where("email = ?", email).Find(&user)
+	//db.Where("email = ?", email).Find(&user)
+	db.Where("email = ?", email).First(&user)
 	if user.ID == "" {
 		json.NewEncoder(w).Encode(Response{
 			Code: 422,
@@ -61,7 +61,7 @@ func LoginUserOrm(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 登陆成功
-	fmt.Println("登陆成功，用户为：",user.Email)
+	//fmt.Println("登陆成功，用户为：",user.Email)
 
 	json.NewEncoder(w).Encode(Response{
 		Code: 200,
@@ -70,6 +70,7 @@ func LoginUserOrm(w http.ResponseWriter, r *http.Request) {
 	})
 
 }
+
 
 // Create Login handler with SQL
 func LoginUserSQL(w http.ResponseWriter, r *http.Request) {

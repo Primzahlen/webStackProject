@@ -2,23 +2,20 @@ package services
 
 import (
 	"context"
-	"fmt"
-	"github.com/golang/protobuf/proto"
 	"grpc_v1_client/pbfiles"
+	"log"
 	"reflect"
 )
 
 func SendMessage(sendClient pbfiles.TransferServiceClient) {
 	message := initTransferMessage()
-	m_size, _ := proto.Marshal(message)
-	fmt.Printf("message size: %d bytes\n\n\n", len(m_size))
+	//m_size, _ := proto.Marshal(message)
+	//fmt.Printf("message size: %d bytes\n\n\n", len(m_size))
 	response, err :=sendClient.DataTransmission(context.Background(), message)
-	if err == nil && response.Field1 == "OK"{
-		fmt.Printf("返回正确message信息")
-	}else {
-		fmt.Printf("接收message发生错误")
+	if err != nil || response.Field1 != "OK"{
+		log.Fatalf("接收message发生错误 %v", err)
 	}
-	fmt.Println(response)
+	//fmt.Println(response)
 }
 
 func initTransferMessage() *pbfiles.BenchmarkMessage {
@@ -35,7 +32,6 @@ func initTransferMessage() *pbfiles.BenchmarkMessage {
 	//遍历message的每一个field
 	for i:=3; i<num; i++ {
 		field := v.Field(i)
-		fmt.Println("field is :",field)
 		if field.Type().Kind() == reflect.Ptr {
 			switch v.Field(i).Type().Elem().Kind() {
 			case reflect.Int, reflect.Int32:

@@ -11,10 +11,9 @@ import (
 
 func main()  {
 	db := common.InitDB()
-	DB := common.InitMysql()
-	defer DB.Close()
 	defer db.Close()
-
+	//DB := common.InitMysql()
+	//defer DB.Close()
 	rpcServer := grpc.NewServer()
 	pbfiles.RegisterUserServiceServer(rpcServer, new(services.UserService))
 	pbfiles.RegisterTransferServiceServer(rpcServer, new(services.Transfer))
@@ -22,5 +21,5 @@ func main()  {
 	if err != nil {
 		log.Fatalf("Fail to start network listening server #{err}\n")
 	}
-	rpcServer.Serve(listen)
+	panic(rpcServer.Serve(listen))
 }
