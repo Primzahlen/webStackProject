@@ -40,7 +40,7 @@ func LoginRequest(client *http.Client) {
 		log.Fatalf("无法解析JSON: #{err}\n")
 	}
 	if target.Code != 200 || target.User == nil {
-		log.Fatalf("登陆失败！: #{err}\n")
+		log.Fatalf("登陆失败！: %v\n",target)
 	}
 }
 
@@ -54,7 +54,7 @@ func LoginRequestSql(client *http.Client) {
 	json.NewEncoder(buf).Encode(u)
 	resp, err := client.Post("http://127.0.0.1:60001/LoginUserSQL", "application/json", buf)
 	if err != nil {
-		log.Fatalf("Http request failed: #{err}\n")
+		log.Fatalf("Http request failed: %v\n", err)
 	}
 	defer resp.Body.Close()
 

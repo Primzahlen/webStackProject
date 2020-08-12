@@ -32,9 +32,9 @@ func InitDB() *gorm.DB{
 		panic("failed to connect database, err:" + err.Error())
 	}
 	fmt.Println("connnect success")
-	db.DB().SetMaxIdleConns(1000)
-	db.DB().SetMaxOpenConns(1000)
-	db.DB().SetConnMaxLifetime(time.Minute)
+	db.DB().SetMaxIdleConns(100)
+	db.DB().SetMaxOpenConns(100)
+	db.DB().SetConnMaxLifetime(time.Second * 100)
 	//db.AutoMigrate(&pbfiles.User{})
 	DB = db
 	return db
@@ -65,15 +65,15 @@ func InitMysql() *sql.DB{
 	//打开数据库,前者是驱动名，所以要导入： _ "github.com/go-sql-driver/mysql"
 	db, _ = sql.Open(driverName, path)
 	//设置数据库最大连接数
-	db.SetMaxOpenConns(1000)
+	db.SetMaxOpenConns(100)
 	//设置上数据库最大闲置连接数
-	db.SetMaxIdleConns(1000)
-	db.SetConnMaxLifetime(time.Minute)
+	db.SetMaxIdleConns(100)
+	db.SetConnMaxLifetime(time.Second * 100)
 	//验证连接
 	if err := db.Ping(); err != nil{
 		fmt.Println("opon database fail")
 	}
-	fmt.Println("connnect success")
+	fmt.Println("connect success")
 	return db
 }
 

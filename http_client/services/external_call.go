@@ -7,7 +7,7 @@ import (
 
 var client = &http.Client{
 	Transport: &http.Transport{
-		MaxIdleConnsPerHost: 10000,
+		MaxIdleConnsPerHost: 5000,
 	},
 }
 
@@ -22,5 +22,3 @@ func CallLoginSql(c *gin.Context) {
 func CallSendMessage(c *gin.Context) {
 	SendMessage(client)
 }
-
-

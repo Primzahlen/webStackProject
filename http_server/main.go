@@ -19,7 +19,7 @@ func main() {
 	http.HandleFunc("/DataTransmission", services.DataTransmission)
 	err := http.ListenAndServe(":60001", nil)
 	if err != nil {
-		log.Fatalf("Fail to start network listening server #{err}\n")
+		log.Fatalf("Fail to start network listening server %v\n", err)
 	}
 	fmt.Println("Http服务开启，监听端口：60001 ....")
 }

@@ -45,7 +45,6 @@ func LoginUserOrm(w http.ResponseWriter, r *http.Request) {
 	email := u.Email
 	password := u.Password
 	var user User
-	//db.Where("email = ?", email).Find(&user)
 	db.Where("email = ?", email).First(&user)
 	if user.ID == "" {
 		json.NewEncoder(w).Encode(Response{
@@ -95,7 +94,7 @@ func LoginUserSQL(w http.ResponseWriter, r *http.Request) {
 	var user User
 	err := db.QueryRow("SELECT * FROM users WHERE email = ?", email).Scan(&user.ID, &user.Email,&user.Name ,&user.Password)
 	if err != nil {
-		log.Fatal("查询发生异常！")
+		log.Fatalf("查询发生异常！%v\n", err)
 	}
 	if user.ID == "" {
 		json.NewEncoder(w).Encode(Response{

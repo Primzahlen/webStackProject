@@ -109,7 +109,7 @@ func (*UserService) LoginUserSql(ctx context.Context, in *pbfiles.User) (*pbfile
 	//db.First(&user, id) // 查询id为1的user
 	err := db.QueryRow("SELECT * FROM users WHERE email = ?", email).Scan(&user.Id, &user.Email,&user.Name ,&user.Password)
 	if err != nil {
-		log.Fatal("查询发生异常！")
+		log.Fatalf("查询发生异常！ %v\n", err)
 	}
 	if user.Id == "" {
 		return &pbfiles.UserResponse{

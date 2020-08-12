@@ -1,0 +1,57 @@
+Running 10s test @ http://127.0.0.1:8080/send_message
+  1 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    22.18ms   11.87ms 156.63ms   81.99%
+    Req/Sec     4.68k     1.08k    6.22k    74.00%
+  Latency Distribution
+     50%   19.67ms
+     75%   24.83ms
+     90%   35.74ms
+     99%   68.72ms
+  46682 requests in 10.04s, 3.34MB read
+Requests/sec:   4649.94
+Transfer/sec:    340.57KB
+
+Running 10s test @ http://127.0.0.1:8080/send_message
+  1 threads and 500 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   109.44ms   58.50ms 539.54ms   79.56%
+    Req/Sec     4.73k     1.36k    6.31k    82.00%
+  Latency Distribution
+     50%   96.40ms
+     75%  112.42ms
+     90%  184.16ms
+     99%  330.68ms
+  47120 requests in 10.07s, 3.37MB read
+Requests/sec:   4679.83
+Transfer/sec:    342.76KB
+
+Running 10s test @ http://127.0.0.1:8080/send_message
+  1 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   131.70ms   71.45ms 827.97ms   72.88%
+    Req/Sec     4.85k     1.19k    6.51k    81.52%
+  Latency Distribution
+     50%  124.30ms
+     75%  168.83ms
+     90%  222.15ms
+     99%  375.10ms
+  44887 requests in 10.09s, 3.21MB read
+  Socket errors: connect 0, read 1018, write 38, timeout 0
+Requests/sec:   4447.34
+Transfer/sec:    325.73KB
+
+Running 10s test @ http://127.0.0.1:8080/send_message
+  1 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   405.56ms  165.53ms   1.70s    83.18%
+    Req/Sec     4.86k     1.17k    6.60k    70.45%
+  Latency Distribution
+     50%  401.92ms
+     75%  443.08ms
+     90%  530.06ms
+     99%  884.29ms
+  43096 requests in 10.09s, 3.08MB read
+Requests/sec:   4273.03
+Transfer/sec:    312.97KB
+

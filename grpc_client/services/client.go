@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-func OneWayLogin(userClient pbfiles.UserServiceClient) {
+func OneWayLogin(userClient pbfiles.UserServiceClient) error{
 	userRes, err := userClient.LoginUser(context.Background(), &pbfiles.User{
 		Email: "123@qq.com",
 		Name: "Ye Caixu",
@@ -17,11 +17,14 @@ func OneWayLogin(userClient pbfiles.UserServiceClient) {
 
 	if err != nil{
 		log.Fatalf("Failed to request RPC server %v\n", err)
+		return err
 	}
 
 	if userRes == nil || userRes.Code != 200 || userRes.User == nil {
 		log.Fatalf("grpc response is wrong: %v", userRes)
+		return err
 	}
+	return nil
 	//log.Println(userRes.User)
 }
 

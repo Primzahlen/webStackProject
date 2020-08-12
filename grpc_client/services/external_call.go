@@ -13,7 +13,7 @@ var transferClient pbfiles.TransferServiceClient
 func InitGrpc() (*grpc.ClientConn) {
 	conn, err := grpc.Dial(":8081", grpc.WithInsecure())
 	if err != nil{
-		log.Fatal("Fail to connect grpc server #{err}\n")
+		log.Fatalf("Fail to connect grpc server %v \n",err)
 	}
 	userClient = pbfiles.NewUserServiceClient(conn)
 	transferClient = pbfiles.NewTransferServiceClient(conn)
@@ -21,7 +21,10 @@ func InitGrpc() (*grpc.ClientConn) {
 }
 
 func CallLoginOrm(c *gin.Context) {
-	OneWayLogin(userClient)
+	err := OneWayLogin(userClient)
+	if err != nil {
+		log.Fatalf("RPC server response error %v\n", err)
+	}
 }
 
 func CallSendMessage(c *gin.Context) {

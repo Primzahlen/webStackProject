@@ -1,0 +1,57 @@
+Running 10s test @ http://127.0.0.1:8080/login_orm
+  1 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    70.98ms   61.19ms 537.98ms   93.99%
+    Req/Sec     1.65k   444.41     2.28k    71.13%
+  Latency Distribution
+     50%   55.02ms
+     75%   68.24ms
+     90%   96.42ms
+     99%  436.17ms
+  16032 requests in 10.06s, 1.15MB read
+Requests/sec:   1593.10
+Transfer/sec:    116.68KB
+
+Running 10s test @ http://127.0.0.1:8080/login_orm
+  1 threads and 500 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   332.15ms   95.78ms 985.32ms   86.60%
+    Req/Sec     1.51k   414.41     2.18k    65.31%
+  Latency Distribution
+     50%  323.02ms
+     75%  376.07ms
+     90%  435.04ms
+     99%  651.83ms
+  14787 requests in 10.03s, 1.06MB read
+Requests/sec:   1474.70
+Transfer/sec:    108.01KB
+
+Running 10s test @ http://127.0.0.1:8080/login_orm
+  1 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   695.64ms  167.82ms   2.22s    83.41%
+    Req/Sec     1.40k   452.42     3.94k    81.72%
+  Latency Distribution
+     50%  682.75ms
+     75%  742.15ms
+     90%  863.37ms
+     99%    1.14s 
+  13233 requests in 10.06s, 0.95MB read
+Requests/sec:   1315.54
+Transfer/sec:     96.35KB
+
+Running 10s test @ http://127.0.0.1:8080/login_orm
+  1 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.65s   580.08ms   2.93s    70.92%
+    Req/Sec     0.99k   332.87     2.02k    74.63%
+  Latency Distribution
+     50%    1.82s 
+     75%    2.00s 
+     90%    2.30s 
+     99%    2.66s 
+  8399 requests in 10.06s, 615.16KB read
+  Socket errors: connect 0, read 2, write 0, timeout 9
+Requests/sec:    834.59
+Transfer/sec:     61.13KB
+
