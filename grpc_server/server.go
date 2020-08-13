@@ -10,10 +10,10 @@ import (
 )
 
 func main()  {
-	//db := common.InitDB()
-	//defer db.Close()
-	DB := common.InitMysql()
-	defer DB.Close()
+	db := common.InitDB()
+	defer db.Close()
+	//DB := common.InitMysql()
+	//defer DB.Close()
 	rpcServer := grpc.NewServer()
 	pbfiles.RegisterUserServiceServer(rpcServer, new(services.UserService))
 	pbfiles.RegisterTransferServiceServer(rpcServer, new(services.Transfer))
