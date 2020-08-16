@@ -1,4 +1,4 @@
-## QPS 
+## TPS 
 ![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/myplot.jpg)
 ## table
 ![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/table.jpg)
