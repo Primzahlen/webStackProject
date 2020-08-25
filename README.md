@@ -1,5 +1,19 @@
-## TPS 
-![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/myplot.jpg)
+## QPS 
+(1) Query QPS 
+
+![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/QPS_query.jpg)
+
+(2) Send fix size message 
+
+![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/QPS_message.jpg)
+## Latency 
+(1) Query Latency 
+
+![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/Latency_mean_query.jpg)
+(2) Send fix size message latency 
+
+![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/Latency_mean_message.jpg)
+
 ## table
 ![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/table.jpg)
 ## grpc server

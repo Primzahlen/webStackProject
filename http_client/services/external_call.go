@@ -3,11 +3,13 @@ package services
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+
 )
 
 var client = &http.Client{
 	Transport: &http.Transport{
 		MaxIdleConnsPerHost: 5000,
+		// DisableKeepAlives: true,
 	},
 }
 

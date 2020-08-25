@@ -1,57 +1,59 @@
 Running 10s test @ http://127.0.0.1:8080/login_sql
   1 threads and 100 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    67.48ms   20.52ms 208.73ms   78.85%
-    Req/Sec     1.49k   340.76     2.28k    69.00%
+    Latency    45.47ms   12.20ms 226.74ms   86.53%
+    Req/Sec     2.21k   174.37     2.74k    78.00%
   Latency Distribution
-     50%   65.88ms
-     75%   75.94ms
-     90%   90.06ms
-     99%  133.94ms
-  14875 requests in 10.07s, 1.06MB read
-Requests/sec:   1477.30
-Transfer/sec:    108.20KB
+     50%   44.98ms
+     75%   49.71ms
+     90%   55.03ms
+     99%   85.67ms
+  22120 requests in 10.07s, 1.58MB read
+Requests/sec:   2196.88
+Transfer/sec:    160.90KB
 
 Running 10s test @ http://127.0.0.1:8080/login_sql
   1 threads and 500 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   303.56ms   70.20ms   1.00s    93.87%
-    Req/Sec     1.63k   198.69     2.01k    82.65%
+    Latency   117.71ms   31.86ms 453.29ms   90.50%
+    Req/Sec     2.14k   249.45     2.55k    85.00%
   Latency Distribution
-     50%  301.05ms
-     75%  314.45ms
-     90%  337.73ms
-     99%  595.20ms
-  16109 requests in 10.08s, 1.15MB read
-  Socket errors: connect 0, read 18, write 3, timeout 0
-Requests/sec:   1597.91
-Transfer/sec:    117.03KB
+     50%  116.53ms
+     75%  122.41ms
+     90%  132.06ms
+     99%  231.41ms
+  21354 requests in 10.05s, 1.53MB read
+  Socket errors: connect 248, read 0, write 0, timeout 0
+Requests/sec:   2124.59
+Transfer/sec:    155.61KB
 
 Running 10s test @ http://127.0.0.1:8080/login_sql
   1 threads and 1000 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   628.59ms  142.28ms   1.91s    89.13%
-    Req/Sec     1.57k   613.52     6.63k    92.47%
+    Latency   116.16ms   29.07ms 404.32ms   90.55%
+    Req/Sec     2.16k   276.46     2.54k    87.00%
   Latency Distribution
-     50%  630.76ms
-     75%  643.44ms
-     90%  656.02ms
-     99%    1.25s 
-  14863 requests in 10.07s, 1.06MB read
-Requests/sec:   1475.97
-Transfer/sec:    108.10KB
+     50%  114.56ms
+     75%  121.45ms
+     90%  130.67ms
+     99%  226.71ms
+  21605 requests in 10.06s, 1.55MB read
+  Socket errors: connect 748, read 24, write 3, timeout 0
+Requests/sec:   2148.29
+Transfer/sec:    157.35KB
 
 Running 10s test @ http://127.0.0.1:8080/login_sql
   1 threads and 2000 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   341.75ms  187.12ms   1.27s    67.82%
-    Req/Sec     1.40k   297.27     2.09k    86.21%
+    Latency   113.30ms   28.30ms 431.16ms   92.93%
+    Req/Sec     2.22k   216.84     2.83k    88.00%
   Latency Distribution
-     50%  365.03ms
-     75%  447.24ms
-     90%  616.90ms
-     99%  698.73ms
-  12646 requests in 10.01s, 0.90MB read
-  Socket errors: connect 0, read 1161, write 12, timeout 0
-Requests/sec:   1263.79
-Transfer/sec:     92.56KB
+     50%  113.21ms
+     75%  119.63ms
+     90%  125.51ms
+     99%  224.67ms
+  22172 requests in 10.07s, 1.59MB read
+  Socket errors: connect 1748, read 13, write 0, timeout 0
+Requests/sec:   2202.77
+Transfer/sec:    161.34KB
+

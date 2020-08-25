@@ -27,6 +27,7 @@ func LoginRequest(client *http.Client) {
 	}
 	buf := new(bytes.Buffer)
 	json.NewEncoder(buf).Encode(u)
+
 	resp, err := client.Post("http://127.0.0.1:60001/LoginUserOrm", "application/json", buf)
 	if err != nil {
 		log.Fatalf("Http request failed: %s",err)

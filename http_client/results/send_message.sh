@@ -9,6 +9,7 @@ exec_single_wrk(){
 	do
 	  result=$(wrk -t1 -c${concurrency} -d10 --latency --timeout 3 "http://127.0.0.1:8080/send_message" >> "send_message_result.txt" 2>&1)
 		echo >> "send_message_result.txt" 2>&1
+		wait
 	done
 }
 

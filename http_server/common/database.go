@@ -38,7 +38,7 @@ func InitDB() *gorm.DB{
 	// SetMaxOpenConns 设置数据库连接最大打开数。
 	db.DB().SetMaxOpenConns(100)
 	// SetConnMaxLifetime 设置可重用连接的最长时间
-	db.DB().SetConnMaxLifetime(time.Second * 150)
+	db.DB().SetConnMaxLifetime(time.Second * 200)
 	DB = db
 	return db
 }
@@ -52,7 +52,7 @@ const (
 	driverName = "mysql"
 	host = "127.0.0.1"
 	port = "3306"
-	database = "grpc_v1"
+	database = "grpc_v2"
 	username = "root"
 	password = "ycx123456"
 	charset = "utf8"
@@ -71,7 +71,7 @@ func InitMysql() *sql.DB{
 	db.SetMaxOpenConns(100)
 	//设置上数据库最大闲置连接数
 	db.SetMaxIdleConns(100)
-	db.SetConnMaxLifetime(time.Second * 150)
+	db.SetConnMaxLifetime(time.Second * 200)
 	//验证连接
 	if err := db.Ping(); err != nil{
 		fmt.Println("opon database fail")

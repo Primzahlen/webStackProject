@@ -9,6 +9,7 @@ exec_single_wrk(){
 	do
 	  result=$(wrk -t1 -c${concurrency} -d10 --latency --timeout 3 "http://127.0.0.1:8080/login_orm" >> "login_orm_result.txt" 2>&1)
 		echo >> "login_orm_result.txt" 2>&1
+		wait
 	done
 }
 
