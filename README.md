@@ -15,7 +15,7 @@
 ![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/Latency_mean_message.jpg)
 
 ## table
-![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/table.jpg)
+![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/table.png)
 ## grpc server
 Server implement by grpc with grom
 ## grpc v1 client
