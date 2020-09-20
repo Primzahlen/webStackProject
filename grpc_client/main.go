@@ -8,11 +8,6 @@ import (
 func main() {
 	conn := services.InitGrpc()
 	r := gin.Default()
-	//r.GET("/ping", func(c *gin.Context) {
-	//	c.JSON(200, gin.H{
-	//		"message": "pong",
-	//	})
-	//})
 	r.GET("/login_orm", services.CallLoginOrm)
 	r.GET("/login_sql", services.CallLoginSql)
 	r.GET("/send_message", services.CallSendMessage)

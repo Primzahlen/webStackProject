@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 )
-
+// Provides an interface for external calls, implemented using the NET/HTTP package
 var client = &http.Client{
 	Transport: &http.Transport{
 		MaxIdleConnsPerHost: 5000,

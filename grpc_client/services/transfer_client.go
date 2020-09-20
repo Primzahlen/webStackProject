@@ -2,35 +2,30 @@ package services
 
 import (
 	"context"
-	"grpc_v1_client/pbfiles"
+	"grpc_v1_client/pb"
 	"log"
 	"reflect"
 )
 
-func SendMessage(sendClient pbfiles.TransferServiceClient) {
+func SendMessage(sendClient pb.TransferServiceClient) {
 	message := initTransferMessage()
-	//m_size, _ := proto.Marshal(message)
 	//fmt.Printf("message size: %d bytes\n\n\n", len(m_size))
 	response, err :=sendClient.DataTransmission(context.Background(), message)
 	if err != nil || response.Field1 != "OK"{
-		log.Fatalf("接收message发生错误 %v", err)
+		log.Fatalf("Error receiving message %v", err)
 	}
-	//fmt.Println(response)
 }
 
-func initTransferMessage() *pbfiles.BenchmarkMessage {
-	// 设置MESSAGE中有关类型的赋值
+func initTransferMessage() *pb.BenchmarkMessage {
+	// Sets the assignment of the type in MESSAGE
 	b := false
 	var i32 int32 = 10000
 	var i64 int64 = 10000
 	var s = "I am a student from University of Glasgow, I want to be a good programmer."
-	var message pbfiles.BenchmarkMessage
-	// 使用反射，V 获取message所有元素
-	v := reflect.ValueOf(&message).Elem()
-	// num：message中field数量
-	num := v.NumField()
-	//遍历message的每一个field
-	for i:=3; i<num; i++ {
+	var message pb.BenchmarkMessage
+	v := reflect.ValueOf(&message).Elem()	// Using reflection, V gets all the elements of the message
+	num := v.NumField()	// num：field numbers in message
+	for i:=3; i<num; i++ {	// Traverse each field of message
 		field := v.Field(i)
 		if field.Type().Kind() == reflect.Ptr {
 			switch v.Field(i).Type().Elem().Kind() {

@@ -9,7 +9,7 @@ According to the experimental results, the number of connections on the scale of
  
 The client sends a packet of fixed size (600byte) to the server, which updates the status field after receiving it: OK, and returns the data to the client through re-encapsulation. According to the experimental results, the combination of GRPC protocol is significantly superior to the combination of HTTP protocol. Using GRPC has obvious advantages in transmitting larger packets, but performance is slightly reduced as the number of connections increases. Although the combination of HTTP protocol is lagging behind in QPS value, with the increase of the number of connections, the performance does not fluctuate greatly and is relatively stable. 
 
-![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/QPS_message.jpg) 
+![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/p6.png) 
 
 ## Latency 
 (1) Query Latency 
@@ -28,7 +28,7 @@ The client sends a packet of fixed size (600byte) to the server, which updates t
 ![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/table.png)
 ## grpc server
 Server implement by grpc with grom
-## grpc v1 client
+## grpc client
 Client implement by grpc, it has two request methods.
 wrk -t8 -c100 -d30s http://127.0.0.1:8080/login_orm
 ![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/p3.png)
@@ -36,7 +36,7 @@ wrk -t8 -c100 -d30s http://127.0.0.1:8080/login_sql
 ![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/p4.png)
 wrk -t8 -c100 -d30s http://127.0.0.1:8080/send_message
 ![avatar](https://github.com/Primzahlen/webStackProject/blob/master/benchmark/p5.png)
-## http v1 server
+## http server
 Server implement by http protol
 ## http client
 Client implement by http protol

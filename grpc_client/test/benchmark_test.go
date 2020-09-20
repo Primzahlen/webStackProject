@@ -2,7 +2,7 @@ package test
 
 import (
 	"google.golang.org/grpc"
-	"grpc_v1_client/pbfiles"
+	"grpc_v1_client/pb"
 	"grpc_v1_client/services"
 	"testing"
 )
@@ -14,7 +14,7 @@ func BenchmarkOneWay(b *testing.B) {
 	}
 
 	defer conn.Close()
-	userClient := pbfiles.NewUserServiceClient(conn)
+	userClient := pb.NewUserServiceClient(conn)
 	for i:=0;i<b.N;i++{
 		services.OneWayLogin(userClient, b)
 	}
@@ -27,7 +27,7 @@ func BenchmarkOneWaySql(b *testing.B) {
 	}
 
 	defer conn.Close()
-	userClient := pbfiles.NewUserServiceClient(conn)
+	userClient := pb.NewUserServiceClient(conn)
 	for i:=0;i<b.N;i++{
 		services.OneWayLoginSql(userClient, b)
 	}
@@ -41,7 +41,7 @@ func BenchmarkLoginStream(b *testing.B) {
 	}
 
 	defer conn.Close()
-	userClient := pbfiles.NewUserServiceClient(conn)
+	userClient := pb.NewUserServiceClient(conn)
 	services.LoginByStream(userClient, b)
 }
 
@@ -52,6 +52,6 @@ func BenchmarkLoginStreamSql(b *testing.B) {
 	}
 
 	defer conn.Close()
-	userClient := pbfiles.NewUserServiceClient(conn)
+	userClient := pb.NewUserServiceClient(conn)
 	services.LoginByStreamSql(userClient, b)
 }

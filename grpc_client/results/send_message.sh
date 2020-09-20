@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# API  127.0.0.1:8080/login_orm
-# 设置并发数为 100 500 1000 2000 5000
+# API  127.0.0.1:8080/login_orm test script
+# Set the concurrency value  100 500 1000 2000 5000
 con_arr="100 500 1000 2000"
 
 exec_single_wrk(){

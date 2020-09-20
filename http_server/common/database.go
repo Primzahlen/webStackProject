@@ -10,7 +10,7 @@ import (
 import _ "github.com/go-sql-driver/mysql"
 
 var DB *gorm.DB
-
+// gorm initialize
 func InitDB() *gorm.DB{
 	driverName := "mysql"
 	host := "127.0.0.1"
@@ -31,14 +31,11 @@ func InitDB() *gorm.DB{
 	if err != nil{
 		panic("failed to connect database, err:" + err.Error())
 	}
-	fmt.Printf("已经连接到数据库 \n")
+	fmt.Printf("You are connected to the database \n")
 	//db.AutoMigrate(&services.User{})
-	// SetMaxIdleConns 设置空闲连接池中的最大连接数。
-	db.DB().SetMaxIdleConns(100)
-	// SetMaxOpenConns 设置数据库连接最大打开数。
-	db.DB().SetMaxOpenConns(100)
-	// SetConnMaxLifetime 设置可重用连接的最长时间
-	db.DB().SetConnMaxLifetime(time.Second * 200)
+	db.DB().SetMaxIdleConns(100)  // Sets the maximum number of connections in the free connection pool.
+	db.DB().SetMaxOpenConns(100)  // Sets the maximum number of open database connections
+	db.DB().SetConnMaxLifetime(time.Second * 200)  // Sets the maximum time for a reusable connection
 	DB = db
 	return db
 }
@@ -47,7 +44,7 @@ func GetDB() *gorm.DB{
 	return DB
 }
 
-//数据库配置
+// Database configuration
 const (
 	driverName = "mysql"
 	host = "127.0.0.1"
@@ -57,23 +54,18 @@ const (
 	password = "ycx123456"
 	charset = "utf8"
 )
-//Db数据库连接池
+// Database connection pool
 var db *sql.DB
 
-//注意方法名大写，就是public
+// raw sql lib initialize
 func InitMysql() *sql.DB{
-	//构建连接："用户名:密码@tcp(IP:端口)/数据库?charset=utf8"
+	// Build connection: "Username: password @TCP (IP: port)/ database? charset=utf8"
 	path := strings.Join([]string{username, ":", password, "@tcp(",host, ":", port, ")/", database, "?charset=",charset}, "")
-
-	//打开数据库,前者是驱动名，所以要导入： _ "github.com/go-sql-driver/mysql"
-	db, _ = sql.Open(driverName, path)
-	//设置数据库最大连接数
-	db.SetMaxOpenConns(100)
-	//设置上数据库最大闲置连接数
-	db.SetMaxIdleConns(100)
+	db, _ = sql.Open(driverName, path)  // Open the database. The former is the driver name
+	db.SetMaxOpenConns(100) // Set the maximum number of database connections
+	db.SetMaxIdleConns(100) // Sets the maximum number of idle connections to the database on
 	db.SetConnMaxLifetime(time.Second * 200)
-	//验证连接
-	if err := db.Ping(); err != nil{
+	if err := db.Ping(); err != nil{  // Verify the connection
 		fmt.Println("opon database fail")
 	}
 	fmt.Println("connnect success")

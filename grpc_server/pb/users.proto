@@ -1,5 +1,5 @@
 syntax="proto3";
-package pbfiles;
+package pb;
 
 message User {
   string id = 1;
@@ -22,6 +22,7 @@ message UsersStreamResponse {
     repeated UserResponse userRep = 1;
 }
 
+// defined userService interface
 service UserService {
   rpc LoginUser(User) returns (UserResponse) {}
   rpc GetUserStream(UsersRequest) returns (stream UsersStreamResponse) {}

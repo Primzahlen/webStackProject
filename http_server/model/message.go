@@ -6,7 +6,7 @@ type Response struct {
 	Code int `json:"code"`
 	Data *BenchmarkMessage `json:"data"`
 }
-// fixed size data
+// transmitting data (fixed size data)
 type BenchmarkMessage struct {
 	Field1 string `json:"Field1"`
 	Field9 string `json:"Field9"`

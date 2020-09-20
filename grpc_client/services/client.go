@@ -2,42 +2,45 @@ package services
 
 import (
 	"context"
-	"grpc_v1_client/pbfiles"
+	"fmt"
+	"grpc_v1_client/pb"
 	"io"
 	"log"
+	"math/rand"
+	"strconv"
 	"testing"
+	"time"
 )
 
-func OneWayLogin(userClient pbfiles.UserServiceClient) error{
-	userRes, err := userClient.LoginUser(context.Background(), &pbfiles.User{
-		Email: "123@qq.com",
-		Name: "Ye Caixu",
+// Create Login stub with Gorm
+func OneWayLogin(userClient pb.UserServiceClient) error{
+	email := GenerateEmail()
+	userRes, err := userClient.LoginUser(context.Background(), &pb.User{
+		Email: email,
+		Name: "Tony",
 		Password: "123456",
 	})
-
 	if err != nil{
 		log.Fatalf("Failed to request RPC server %v\n", err)
 		return err
 	}
-
 	if userRes == nil || userRes.Code != 200 || userRes.User == nil {
 		log.Fatalf("grpc response is wrong: %v", userRes)
 		return err
 	}
 	return nil
-	//log.Println(userRes.User)
 }
 
-func LoginByStream(userClient pbfiles.UserServiceClient, b *testing.B)  {
-	usersReq := make([]*pbfiles.User, 0)
+func LoginByStream(userClient pb.UserServiceClient, b *testing.B)  {
+	usersReq := make([]*pb.User, 0)
 	var email string = "ycx@gla.ac.uk"
 	var password string = "123456"
 	for i := 0; i <b.N; i++ {
-		user := &pbfiles.User{Email: email, Password: password}
+		user := &pb.User{Email: email, Password: password}
 		usersReq = append(usersReq, user)
 	}
 	stream, err := userClient.GetUserStream(context.Background(),
-		&pbfiles.UsersRequest{Users: usersReq})
+		&pb.UsersRequest{Users: usersReq})
 	if err != nil {
 		log.Fatalf("请求GRPC服务器失败 %v\n", err)
 	}
@@ -56,35 +59,32 @@ func LoginByStream(userClient pbfiles.UserServiceClient, b *testing.B)  {
 		}
 	}
 }
-// using sql server response
-func OneWayLoginSql(userClient pbfiles.UserServiceClient) {
-	userRes, err := userClient.LoginUserSql(context.Background(), &pbfiles.User{
-		Email: "123@qq.com",
-		Name: "Ye Caixu",
+// // Create Login stub with sql lib
+func OneWayLoginSql(userClient pb.UserServiceClient) {
+	email := GenerateEmail()
+	userRes, err := userClient.LoginUserSql(context.Background(), &pb.User{
+		Email: email,
+		Name: "Tony",
 		Password: "123456",
 	})
-
 	if err != nil{
 		log.Fatalf("Failed to request RPC server %v\n", err)
 	}
-
 	if userRes == nil || userRes.Code != 200 || userRes.User == nil {
 		log.Fatalf("grpc response is wrong: %v", userRes)
 	}
-	//log.Println(userRes.User)
-
 }
 
-func LoginByStreamSql(userClient pbfiles.UserServiceClient, b *testing.B)  {
-	usersReq := make([]*pbfiles.User, 0)
+func LoginByStreamSql(userClient pb.UserServiceClient, b *testing.B)  {
+	usersReq := make([]*pb.User, 0)
 	var email string = "ycx@gla.ac.uk"
 	var password string = "123456"
 	for i := 0; i <b.N; i++ {
-		user := &pbfiles.User{Email: email, Password: password}
+		user := &pb.User{Email: email, Password: password}
 		usersReq = append(usersReq, user)
 	}
 	stream, err := userClient.GetUserStreamSql(context.Background(),
-		&pbfiles.UsersRequest{Users: usersReq})
+		&pb.UsersRequest{Users: usersReq})
 	if err != nil {
 		b.Fatalf("请求GRPC服务器失败 %v\n", err)
 	}
@@ -102,4 +102,13 @@ func LoginByStreamSql(userClient pbfiles.UserServiceClient, b *testing.B)  {
 			b.Fatalf("grpc response is wrong: %v", usersRes)
 		}
 	}
+}
+
+// Randomly generate emails with id [1-1000] "id@stu.gla.ac.uk"
+func GenerateEmail() string{
+	rand.Seed(time.Now().Unix())
+	id := rand.Intn(1000)+1
+	fmt.Println(id)
+	Email :=  strconv.Itoa(id) + "@stu.gla.ac.uk"
+	return Email
 }

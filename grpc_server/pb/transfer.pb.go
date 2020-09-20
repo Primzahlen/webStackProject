@@ -4,7 +4,7 @@
 // 	protoc        v3.12.3
 // source: transfer.proto
 
-package pbfiles
+package pb
 
 import (
 	context "context"

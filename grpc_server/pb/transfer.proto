@@ -1,7 +1,7 @@
 syntax="proto3";
-package pbfiles;
+package pb;
 
-// Fixed size message for testing throughout
+// transmitting data (Fixed size message)
 message BenchmarkMessage {
   string Field1 = 1;
   string Field9 = 9;
@@ -45,6 +45,7 @@ message BenchmarkMessage {
   int32 Field131 = 131;
 }
 
+// defined transfer service interface
 service TransferService {
     rpc DataTransmission(BenchmarkMessage) returns (BenchmarkMessage) {}
     rpc DataTransmissionStream(BenchmarkMessage) returns (stream BenchmarkMessage) {}

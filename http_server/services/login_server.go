@@ -30,7 +30,6 @@ func LoginUserOrm(w http.ResponseWriter, r *http.Request) {
 	var u User
 	decoder.Decode(&u)
 	defer r.Body.Close()
-
 	w.Header().Set("Conent-type", "application/json")
 	validationErr := validate(u)
 	if validationErr != nil {
@@ -40,7 +39,7 @@ func LoginUserOrm(w http.ResponseWriter, r *http.Request) {
 		})
 		return
 	}
-	// Gorm操作
+	// Gorm operation
 	db := common.GetDB()
 	email := u.Email
 	password := u.Password
@@ -49,19 +48,16 @@ func LoginUserOrm(w http.ResponseWriter, r *http.Request) {
 	if user.ID == "" {
 		json.NewEncoder(w).Encode(Response{
 			Code: 422,
-			Message: "用户不存在",
+			Message: "The user does not exist",
 		})
 	}
 	if user.Password != password {
 		json.NewEncoder(w).Encode(Response{
 			Code: 400,
-			Message: "密码错误",
+			Message: "Password error",
 		})
 	}
-
-	// 登陆成功
-	//fmt.Println("登陆成功，用户为：",user.Email)
-
+	// Login successful
 	json.NewEncoder(w).Encode(Response{
 		Code: 200,
 		Message: "OK",
@@ -87,31 +83,29 @@ func LoginUserSQL(w http.ResponseWriter, r *http.Request) {
 		})
 		return
 	}
-	// Gorm操作
+	// get raw sql lib connection
 	db := common.GetMysql()
 	email := u.Email
 	password := u.Password
 	var user User
 	err := db.QueryRow("SELECT * FROM users WHERE email = ?", email).Scan(&user.ID, &user.Email,&user.Name ,&user.Password)
 	if err != nil {
-		log.Fatalf("查询发生异常！%v\n", err)
+		log.Fatalf("Query has an exception！%v\n", err)
 	}
 	if user.ID == "" {
 		json.NewEncoder(w).Encode(Response{
 			Code: 422,
-			Message: "用户不存在",
+			Message: "The user does not exist",
 		})
 	}
 	if user.Password != password {
 		json.NewEncoder(w).Encode(Response{
 			Code: 400,
-			Message: "密码错误",
+			Message: "Password error",
 		})
 	}
 
-	// 登陆成功
-	//log.Println("登陆成功，用户为：",user.Email)
-
+	// Login successful
 	json.NewEncoder(w).Encode(Response{
 		Code: 200,
 		Message: "OK",
@@ -119,6 +113,7 @@ func LoginUserSQL(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+// Input validation
 func validate(user User) error {
 	_, err := mail.ParseAddress(user.Email)
 	if err != nil {

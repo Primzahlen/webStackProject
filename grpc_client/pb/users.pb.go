@@ -4,7 +4,7 @@
 // 	protoc        v3.12.3
 // source: users.proto
 
-package pbfiles
+package pb
 
 import (
 	context "context"
